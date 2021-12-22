@@ -11,7 +11,7 @@ def SleepForWeek():
         if int(sleepPerDay) > 24:
             print("Well, I am no fool")
         else:
-            print(7*sleepPerDay)
+            print(7*int(sleepPerDay))
     else:
         print("Probably entered alphabet. Please recheck")
         SleepForWeek()
