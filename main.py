@@ -17,7 +17,16 @@ def SleepForWeek():
         SleepForWeek()
 
 def SleepForMonth():
-    pass
+    sleepPerDay = input("Enter number of hours you sleep everyday: ")
+    result = re.match("[-+]?\d+$", sleepPerDay)
+    if result is not None:
+        if int(sleepPerDay) > 24:
+            print("Well, I am no fool")
+        else:
+            print(7*int(sleepPerDay))
+    else:
+        print("Probably entered alphabet. Please recheck")
+        SleepForWeek()
 
 def SleepForYear():
     pass
