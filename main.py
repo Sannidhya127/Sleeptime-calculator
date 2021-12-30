@@ -29,14 +29,14 @@ def SleepForMonth():
             division = dateNow.split(" ")
             month = division[0]
             if month in ThirtyDaysMonths:
-                print(30*int(sleepPerDay))
+                print(f"{30*int(sleepPerDay)} hours this {month}")
 
             elif month in ThirtyOneDaysMonths:
-                print(31*int(sleepPerDay))
+                print(f"{31*int(sleepPerDay)} hours this {month}")
             
             elif month == "February":
-                print(28*int(sleepPerDay) + " For non leap year")
-                print(29*int(sleepPerDay) + " For leap year")
+                print(28*int(sleepPerDay) + " hours for non leap year for this {month}")
+                print(29*int(sleepPerDay) + " hours for leap year for this {month}")
 
 
     else:
@@ -44,7 +44,19 @@ def SleepForMonth():
         SleepForWeek()
 
 def SleepForYear():
-    pass
+    sleepPerDay = input("Enter number of hours you sleep everyday: ")
+    result = re.match("[-+]?\d+$", sleepPerDay)
+    if result is not None:
+        if int(sleepPerDay) > 24:
+            print("Well, I am no fool")
+        else:
+            print(f"{365*int(sleepPerDay)} hours For non leap year")
+            print(f"{366*int(sleepPerDay)} hours For leap year")
+
+
+    else:       
+        print("Probably entered alphabet. Please recheck")
+        SleepForWeek()
 
 def SleepForLife():
     pass
