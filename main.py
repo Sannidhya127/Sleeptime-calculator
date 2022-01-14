@@ -4,6 +4,21 @@ from datetime import date
 
 today = date.today()
 
+leapYear = False
+
+def CheckLeap(Year):  
+  # Checking if the given year is leap year  
+  if((Year % 400 == 0) or  
+     (Year % 100 != 0) and  
+     (Year % 4 == 0)):   
+    leapYear = True
+    return True
+  # Else it is not a leap year  
+  else:  
+    leapYear = False
+    return True
+
+
 def SleepForWeek():
     sleepPerDay = input("Enter number of hours you sleep everyday: ")
     result = re.match("[-+]?\d+$", sleepPerDay)
@@ -35,9 +50,14 @@ def SleepForMonth():
                 print(f"{31*int(sleepPerDay)} hours this {month}")
             
             elif month == "February":
-                print(28*int(sleepPerDay) + " hours for non leap year for this {month}")
-                print(29*int(sleepPerDay) + " hours for leap year for this {month}")
-
+                dateNow = today.strftime("%B %d, %Y")
+                division = dateNow.split(" ")
+                year = division[2]
+                CheckLeap(year)
+                if CheckLeap == True:
+                     print(f"{366*int(sleepPerDay)} hours of sleep.")
+                elif CheckLeap == False:
+                     print(f"{365*int(sleepPerDay)} hours of sleep")
 
     else:
         print("Probably entered alphabet. Please recheck")
